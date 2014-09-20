@@ -1,5 +1,4 @@
-# Put comments here that give an overall description of what your
-# functions do
+#  R CacheMatrix - Assignment #2
 
 # Purpose:
 #   R-language script to create a matrix to be inverted
@@ -10,12 +9,10 @@
 # 	cacheSolve(amat)
 #
 
-
 #  Date   ID		Description
 #  091714 pbr		Inception
+#  092015 pbr		Validation of instructions
 # 
-#
-
 
 #
 #  Define matrix functions:
@@ -25,16 +22,16 @@ makeCacheMatrix <- function(x,...) {
 	#  Ensure matrix is square:
 	m <- NULL
 	set <- function(matrix(y)) {
-        x <<- y
-        m <<- NULL
-    }
+		x <<- y
+		m <<- NULL
+	}
 	get <- function() x
 	setinvert <- function(solve) m <<- solve
 	getinvert <- function() m
 	#  Broadcast results:
 	list(set = set, get = get,
-         setinvert = setinvert,
-         getinvert = getinvert)
+		setinvert = setinvert,
+		getinvert = getinvert)
 }
 
 #
@@ -43,13 +40,13 @@ makeCacheMatrix <- function(x,...) {
 cacheSolve <- function(x, ...) {
 	# Return a matrix that is the inverse of 'x'
 	m <- x$getinvert()
-    if(!is.null(m)) {
-        message("getting cached data")
-        return(m)
-    }
-    data <- x$get()
-    m <- solve(data, ...)
-    x$setinvert(m)
-    m
+	if(!is.null(m)) {
+		message("getting cached data")
+		return(m)
+	}
+	data <- x$get()
+	m <- solve(data, ...)
+	x$setinvert(m)
+	m
 }
 
