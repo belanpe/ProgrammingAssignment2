@@ -20,20 +20,19 @@
 #
 #  Define matrix functions:
 # 
-
 makeCacheMatrix <- function(x,...) {
 	#
 	#  Ensure matrix is square:
 	m <- NULL
-    set <- function(matrix(y)) {
+	set <- function(matrix(y)) {
         x <<- y
         m <<- NULL
     }
 	get <- function() x
 	setinvert <- function(solve) m <<- solve
-    getinvert <- function() m
+	getinvert <- function() m
 	#  Broadcast results:
-    list(set = set, get = get,
+	list(set = set, get = get,
          setinvert = setinvert,
          getinvert = getinvert)
 }
